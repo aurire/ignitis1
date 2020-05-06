@@ -1,0 +1,7 @@
+custom_drop.content:
+  path: '/custom_drop'
+  defaults:
+    _controller: '\Drupal\custom_drop\Controller\CustomDropController::content'
+    _title: 'Hello Custom Drop World'
+  requirements:
+    _permission: 'access content'

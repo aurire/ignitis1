@@ -1,0 +1,6 @@
+custom_drop.admin:
+  title: 'Custom Drop module settings'
+  description: 'Customizable dropdown lists'
+  parent: system.admin_config_development
+  route_name: hello.content
+  weight: 100
