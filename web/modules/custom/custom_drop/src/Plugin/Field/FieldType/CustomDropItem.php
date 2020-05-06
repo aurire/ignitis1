@@ -4,6 +4,7 @@ namespace Drupal\custom_drop\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
@@ -11,7 +12,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *
  * @FieldType(
  *   id = "custom_drop_sch",
- *   label = @Translation("Custom Drop Label"),
+ *   label = @Translation("Custom Dropdown field type"),
  *   module = "custom_drop",
  *   description = @Translation("Demonstrates a Custom Drop."),
  *   default_widget = "custom_drop_simple",
@@ -51,5 +52,48 @@ class CustomDropItem extends FieldItemBase {
       ->setLabel(t('CustomDropValue'));
 
     return $properties;
+  }
+
+  /**
+   * @return array
+   */
+  public static function defaultFieldSettings() {
+    $fieldSettings = [
+        'apikey' => 'ELO1xno7R6KF0XyegyzU',
+        'maxitems' => 30,
+        'fieldtohide' => 'field-miestas',
+      ] + parent::defaultFieldSettings()
+    ;
+
+    return $fieldSettings;
+  }
+
+  /**
+   * @param array $form
+   * @param FormStateInterface $form_state
+   * @return array
+   */
+  public function fieldSettingsForm(array $form, FormStateInterface $form_state)
+  {
+    $element = [];
+    $element['apikey'] = [
+      '#title' => $this->t('Api KEY'),
+      '#type' => 'textfield',
+      '#default_value' => $this->getSetting('apikey'),
+    ];
+
+    $element['maxitems'] = [
+      '#title' => $this->t('Max number of items'),
+      '#type' => 'number',
+      '#default_value' => $this->getSetting('maxitems'),
+    ];
+
+    $element['fieldtohide'] = [
+      '#title' => $this->t('Field to hide'),
+      '#type' => 'textfield',
+      '#default_value' => $this->getSetting('fieldtohide'),
+    ];
+
+    return $element;
   }
 }

@@ -10,3 +10,23 @@ field.custom_drop_sch.value:
         value:
           type: string
           label: 'Value'
+field.custom_drop_sch.apikey:
+  type: sequence
+  label: 'Api KEY'
+  sequence:
+    - type: mapping
+      label: 'Api KEY'
+      mapping:
+        value:
+          type: string
+          label: 'Value'
+field.custom_drop_sch.maxitems:
+  type: sequence
+  label: 'Max items to show'
+  sequence:
+    - type: mapping
+      label: 'Max items to show'
+      mapping:
+        value:
+          type: string
+          label: 'Value'

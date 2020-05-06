@@ -27,11 +27,9 @@ class SimpleTextFormatter extends FormatterBase {
 
     foreach ($items as $delta => $item) {
       $elements[$delta] = [
-        // We create a render array to produce the desired markup,
-        // See theme_html_tag().
         '#type' => 'html_tag',
         '#tag' => 'p',
-        '#value' => $this->t('The value in this field is @code', ['@code' => $item->value]),
+        '#value' => $this->t('@code', ['@code' => $item->value]),
       ];
     }
 
